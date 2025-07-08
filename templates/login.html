@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - MediChain</title>
-    <!-- Tailwind CSS CDN -->
+   
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind to use 'Inter' font and extend colors if needed -->
+   
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'], // Set Inter as the default sans-serif font
+                        sans: ['Inter', 'sans-serif'], 
                     },
                     colors: {
-                        primary: '#3B82F6', // A nice blue for primary actions
-                        secondary: '#6B7280', // A grey for secondary text
-                        background: '#F9FAFB', // Light grey background
-                        card: '#FFFFFF', // White for cards/forms
+                        primary: '#3B82F6',
+                        secondary: '#6B7280', 
+                        background: '#F9FAFB', 
+                        card: '#FFFFFF', 
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts: Inter (preferred over Poppins for consistency with Tailwind's default font setting) -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-background min-h-screen flex items-center justify-center p-4 font-sans">
@@ -41,7 +41,7 @@
             <p class="text-secondary text-base">Please log in to access your account.</p>
         </div>
         <form class="auth-form space-y-6">
-            <!-- Radio Buttons Group -->
+            
             <div class="form-group flex justify-center space-x-6 mb-6">
                 <div class="flex items-center">
                     <input type="radio" id="Doctor" name="Choice" value="Doctor" class="form-radio h-5 w-5 text-primary focus:ring-primary rounded-full cursor-pointer" checked>
