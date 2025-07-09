@@ -15,7 +15,6 @@
 </head>
 <body class="dashboard-body">
     <div class="dashboard-container">
-        <!-- Sidebar Navigation -->
         <aside class="dashboard-sidebar">
             <div class="sidebar-header">
                 <a href="index.html" class="logo">
@@ -63,9 +62,9 @@
             </div>
         </aside>
 
-        <!-- Main Content Area -->
+    
         <main class="dashboard-main">
-            <!-- Top Navigation Bar -->
+            
             <header class="dashboard-header">
                 <div class="header-search">
                     <i class="fas fa-search"></i>
@@ -83,11 +82,11 @@
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
+        
             <div class="dashboard-content">
                 <h1>Verification Requests</h1>
                 
-                <!-- Tabs for verification status -->
+                
                 <div class="tabs-container">
                     <div class="tabs-header">
                         <button class="tab-btn active" data-tab="pending">Pending (8)</button>
@@ -95,9 +94,9 @@
                         <button class="tab-btn" data-tab="denied">Denied (5)</button>
                     </div>
                     
-                    <!-- Pending Verification Tab -->
+                    
                     <div class="tab-content active" id="pending-tab">
-                        <!-- Filter Controls -->
+                      
                         <div class="filter-container">
                             <div class="filter-group">
                                 <label for="type-filter">Type</label>
@@ -121,7 +120,7 @@
                             </button>
                         </div>
                         
-                        <!-- Verification Requests Table -->
+                        
                         <div class="records-table-container">
                             <table class="records-table">
                                 <thead>
@@ -211,9 +210,8 @@
                         </div>
                     </div>
                     
-                    <!-- Approved Verification Tab -->
                     <div class="tab-content" id="approved-tab">
-                        <!-- Similar structure to pending tab, with approved verifications -->
+                      
                         <div class="records-table-container">
                             <table class="records-table">
                                 <thead>
@@ -252,9 +250,9 @@
                         </div>
                     </div>
                     
-                    <!-- Denied Verification Tab -->
+                    
                     <div class="tab-content" id="denied-tab">
-                        <!-- Similar structure to pending tab, with denied verifications -->
+                       
                         <div class="records-table-container">
                             <table class="records-table">
                                 <thead>
@@ -297,7 +295,6 @@
         </main>
     </div>
 
-    <!-- Verification Details Modal -->
     <div class="modal" id="viewVerificationModal">
         <div class="modal-content modal-lg">
             <div class="modal-header">
@@ -306,7 +303,7 @@
             </div>
             <div class="modal-body">
                 <div class="verification-details">
-                    <!-- Applicant Information -->
+                 
                     <div class="verification-section">
                         <h3>Applicant Information</h3>
                         <div class="applicant-info">
@@ -343,7 +340,7 @@
                         </div>
                     </div>
                     
-                    <!-- Documents -->
+                    
                     <div class="verification-section">
                         <h3>Submitted Documents</h3>
                         <div class="documents-list">
@@ -401,7 +398,7 @@
                         </div>
                     </div>
                     
-                    <!-- Verification Actions -->
+                
                     <div class="verification-actions">
                         <button class="btn btn-approve">
                             <i class="fas fa-check"></i> Approve Verification

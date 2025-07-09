@@ -2,7 +2,7 @@
 :root {
     --primary-color: #007BFF;
     --primary-hover-color: #0056b3;
-    --secondary-color: #f0f8ff; /* Light blue background */
+    --secondary-color: #f0f8ff;
     --text-color: #333;
     --light-gray-color: #f4f4f4;
     --white-color: #ffffff;
@@ -60,7 +60,6 @@ a:hover {
     background-color: var(--primary-hover-color);
 }
 
-/* --- Auth Page Specific Styles --- */
 .auth-container {
     background: var(--white-color);
     padding: 40px;

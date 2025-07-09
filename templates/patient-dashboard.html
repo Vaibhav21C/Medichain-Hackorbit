@@ -51,9 +51,8 @@
             </div>
         </aside>
 
-        <!-- Main Content Area -->
         <main class="dashboard-main">
-            <!-- Top Navigation Bar -->
+       
             <header class="dashboard-header">
                 <div class="header-search">
                     <form action="{{ url_for('patient_search') }}" method="GET" class="search-form">
@@ -74,12 +73,10 @@
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <h1>Patient Dashboard</h1>
                 <p class="welcome-message">Welcome back, {{ name }} Here's an overview of your medical records.</p>
 
-                <!-- Dashboard Stats -->
                 <div class="stats-container">
                     <!-- Medical Records -->
                     <div class="stat-card">
@@ -92,7 +89,6 @@
                         </div>
                     </div>
 
-                    <!-- Authorized Doctors -->
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-user-md"></i>
@@ -103,7 +99,6 @@
                         </div>
                     </div>
 
-                    <!-- Recent Activities -->
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-history"></i>
@@ -116,7 +111,6 @@
                 </div>
 
 
-                <!-- Recent Records -->
                 <div class="dashboard-section">
                     <div class="section-header">
                         <h2>Recent Medical Records</h2>
@@ -154,7 +148,6 @@
 
 
 
-            <!-- Doctor Access -->
             <div class="dashboard-section">
                 <div class="section-header">
                     <h2>Authorized Doctors</h2>

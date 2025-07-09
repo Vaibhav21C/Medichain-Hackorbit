@@ -15,7 +15,7 @@
 </head>
 <body class="dashboard-body">
     <div class="dashboard-container">
-        <!-- Sidebar Navigation -->
+        
         <aside class="dashboard-sidebar">
             <div class="sidebar-header">
                 <a href="index.html" class="logo">
@@ -63,9 +63,9 @@
             </div>
         </aside>
 
-        <!-- Main Content Area -->
+        
         <main class="dashboard-main">
-            <!-- Top Navigation Bar -->
+         
             <header class="dashboard-header">
                 <div class="header-search">
                     <i class="fas fa-search"></i>
@@ -83,12 +83,12 @@
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
+         
             <div class="dashboard-content">
                 <h1>System Settings</h1>
                 <p class="welcome-message">Configure system-wide settings and preferences for the MediChain platform.</p>
                 
-                <!-- Settings Tabs -->
+                
                 <div class="tabs-container">
                     <div class="tabs-header">
                         <button class="tab-btn active" data-tab="general">General</button>
@@ -98,7 +98,7 @@
                         <button class="tab-btn" data-tab="blockchain">Blockchain</button>
                     </div>
                     
-                    <!-- General Settings Tab -->
+                   
                     <div class="tab-content active" id="general-tab">
                         <form id="generalSettingsForm" class="settings-form">
                             <div class="settings-section">
@@ -190,7 +190,7 @@
                         </form>
                     </div>
                     
-                    <!-- Security Settings Tab -->
+                
                     <div class="tab-content" id="security-tab">
                         <form id="securitySettingsForm" class="settings-form">
                             <div class="settings-section">
@@ -283,7 +283,7 @@
                         </form>
                     </div>
                     
-                    <!-- Verification Settings Tab -->
+                   
                     <div class="tab-content" id="verification-tab">
                         <form id="verificationSettingsForm" class="settings-form">
                             <div class="settings-section">
@@ -371,7 +371,7 @@
                         </form>
                     </div>
                     
-                    <!-- Notifications Settings Tab -->
+                  
                     <div class="tab-content" id="notifications-tab">
                         <form id="notificationsSettingsForm" class="settings-form">
                             <div class="settings-section">
@@ -473,7 +473,7 @@
                         </form>
                     </div>
                     
-                    <!-- Blockchain Settings Tab -->
+                 
                     <div class="tab-content" id="blockchain-tab">
                         <form id="blockchainSettingsForm" class="settings-form">
                             <div class="settings-section">
@@ -574,7 +574,7 @@
         </main>
     </div>
 
-    <!-- Success Notification -->
+   
     <div class="notification" id="notification">
         <div class="notification-content">
             <i class="fas fa-check-circle"></i>
@@ -582,13 +582,13 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+
     <script src="script.js"></script>
     <script src="dashboard.js"></script>
     <script>
-        // Initialize tabs functionality
+        
         document.addEventListener('DOMContentLoaded', function() {
-            // Tab switching
+        
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
             
@@ -596,29 +596,28 @@
                 btn.addEventListener('click', () => {
                     const tabId = btn.getAttribute('data-tab');
                     
-                    // Remove active class from all buttons and contents
+                    
                     tabBtns.forEach(b => b.classList.remove('active'));
                     tabContents.forEach(c => c.classList.remove('active'));
                     
-                    // Add active class to current button and content
+                    
                     btn.classList.add('active');
                     document.getElementById(tabId + '-tab').classList.add('active');
                 });
             });
             
-            // Form submissions
+            
             const forms = document.querySelectorAll('.settings-form');
             forms.forEach(form => {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    // Here you would normally save the settings to the server
-                    // For now, just show a success notification
+                    
                     showNotification('Settings saved successfully!');
                 });
             });
         });
         
-        // Show notification function
+       
         function showNotification(message) {
             const notification = document.getElementById('notification');
             const notificationMessage = document.getElementById('notification-message');

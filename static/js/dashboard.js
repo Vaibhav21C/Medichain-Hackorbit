@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Tab switching functionality
+   
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     
     if (tabButtons.length > 0) {
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
+                
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 
-                // Add active class to clicked button
+                
                 button.classList.add('active');
                 
-                // Show corresponding content
+                
                 const tabId = button.getAttribute('data-tab');
                 const activeContent = document.getElementById(`${tabId}-tab`);
                 if (activeContent) {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = "none";
     });
 
-    // Optional: Close modal when clicking outside the modal content
+    
     window.addEventListener("click", function (event) {
         if (event.target === modal) {
             modal.classList.remove("show");
@@ -84,12 +84,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    // Modal functionality
+    
     const modals = document.querySelectorAll('.modal');
     const modalTriggers = document.querySelectorAll('[id$="Btn"]');
     const closeButtons = document.querySelectorAll('.close-modal');
     
-    // Open modal
+  
     if (modalTriggers.length > 0) {
         modalTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close modal with close button
+   
     if (closeButtons.length > 0) {
         closeButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Form submissions
+    
     const forms = document.querySelectorAll('form');
     
     if (forms.length > 0) {
@@ -169,20 +169,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     modal.classList.remove('show');
                     setTimeout(() => {
                         modal.style.display = 'none';
-                        // Reset form
+                       
                         form.reset();
                     }, 300);
                 }
                 
-                // Show success notification
+                /
                 showNotification('Success', 'Your changes have been saved successfully.');
             });
         });
     }
     
-    // Notification function
+  
     function showNotification(title, message) {
-        // Create notification element
+       
         const notification = document.createElement('div');
         notification.className = 'notification';
         notification.innerHTML = `
@@ -195,15 +195,15 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        // Add to document
+        
         document.body.appendChild(notification);
         
-        // Show notification
+        
         setTimeout(() => {
             notification.classList.add('show');
         }, 10);
         
-        // Auto-hide after 5 seconds
+        
         setTimeout(() => {
             notification.classList.remove('show');
             setTimeout(() => {
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         }, 5000);
         
-        // Close button functionality
+       
         const closeButton = notification.querySelector('.close-notification');
         closeButton.addEventListener('click', () => {
             notification.classList.remove('show');
