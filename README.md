@@ -123,6 +123,12 @@ Go to: [https://remix.ethereum.org](https://remix.ethereum.org)
    - File: `medichain.sol`
 2. Make sure your contract uses:
    ```solidity
+   // SPDX-License-Identifier: MIT
+   pragma solidity ^0.8.18;
+
+   contract MediChain {
+       //extract this from medichain.sol
+   }
 
 
 # Create a virtual environment
