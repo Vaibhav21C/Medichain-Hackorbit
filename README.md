@@ -27,9 +27,8 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 - 📁 **Secure Upload** and management of medical records
 - 🔗 **Blockchain Integration** to ensure data immutability
 - 🛡️ **Access Control**: Patients can grant/revoke record access
-- 📜 **Activity Logs** and access tracking
 - 📊 **Doctor Dashboard** with patient lists, diagnosis notes
-- 🤖 **AI Chatbot Assistant** (optional integration)
+- 🤖 **AI Chatbot Assistant** 
 - 🌐 **Modern UI** with responsive dashboard layout
 
 ---
@@ -41,8 +40,8 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 | **Frontend**  | HTML, CSS (TailwindCSS/Dashboard CSS), JavaScript |
 | **Backend**   | Python (Flask)                      |
 | **Blockchain**| Custom Python Blockchain            |
-| **Database**  | SQLite / MySQL (for metadata & users)|
-| **Storage**   | Local uploads or IPFS (optional)    |
-| **AI Bot**    | Rasa (optional)                     |
+| **Database**  | SQLite  (for metadata & users)      |
+| **Storage**   | Local uploads or IPFS               |
+| **AI Bot**    | Rasa                                |
 
 ---
