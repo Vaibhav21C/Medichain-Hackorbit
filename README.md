@@ -93,6 +93,10 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 
 **📋 Patient Settings**
 ![Dashboard Screenshot](./screenshots/Patient-setting.png)
+
+**📋 Blockchain**
+![Dashboard Screenshot](./screenshots/blockchain.jpg)
+
  </details>
  ---
 
