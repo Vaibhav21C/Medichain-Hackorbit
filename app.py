@@ -648,22 +648,22 @@ def chat():
     try:
         user_message = request.json['message']
         
-        # URL of the Rasa webhook
+        
         rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
         
-        # The payload Rasa expects
+        
         payload = {
-            'sender': 'user',  # A unique ID for the user
+            'sender': 'user',  
             'message': user_message
         }
         
-        # Send the message to the Rasa server
+        
         rasa_response = requests.post(rasa_url, json=payload)
-        rasa_response.raise_for_status()  # Raise an exception for bad status codes
+        rasa_response.raise_for_status() 
         
         bot_messages = rasa_response.json()
         
-        # Extract the text from the first bot message, provide a default if empty
+        
         bot_reply = bot_messages[0]['text'] if bot_messages else "I'm sorry, I didn't understand that."
 
         return jsonify({'response': bot_reply})
