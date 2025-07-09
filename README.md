@@ -45,3 +45,13 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 | **AI Bot**    | Rasa                                |
 
 ---
+## 📸 Screenshots
+
+<details>
+<summary>🖥️ Click to expand</summary>
+
+**🏠 Homepage**
+![Homepage Screenshot](./screenshots/Homepage.png)
+
+**📋 Patient Dashboard**
+![Dashboard Screenshot](./screenshots/Dashboard.png)

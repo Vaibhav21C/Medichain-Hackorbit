@@ -11,7 +11,6 @@
 </head>
 <body class="dashboard-body">
   <div class="dashboard-container">
-    
         <aside class="dashboard-sidebar">
             <div class="sidebar-header">
                 <a href="{{ url_for('patient_dashboard') }}" class="logo">>
@@ -94,7 +93,7 @@
                 <div class="form-row" style="display: flex; gap: 20px; flex-wrap: wrap;">
                   <div class="form-group" style="flex: 1; min-width: 250px;">
                     <label>Full Name</label>
-                    <input type="text" value="Jane Doe" />
+                    <input type="text" value={{name}} />
                   </div>
                   <div class="form-group" style="flex: 1; min-width: 250px;">
                     <label>Date of Birth</label>
@@ -105,7 +104,7 @@
                 <div class="form-row" style="display: flex; gap: 20px; flex-wrap: wrap;">
                   <div class="form-group" style="flex: 1; min-width: 250px;">
                     <label>Email</label>
-                    <input type="email" value="jane.doe@example.com" />
+                    <input type="email" value="{{name}}@example.com" />
                   </div>
                   <div class="form-group" style="flex: 1; min-width: 250px;">
                     <label>Phone</label>
@@ -144,7 +143,7 @@
               </form>
             </div>
           </div>
-          
+
           <div class="tab-content" id="notifications-tab">
             <div class="settings-section">
               <h3>Notifications</h3>
