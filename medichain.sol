@@ -27,10 +27,10 @@ contract HospitalSystem is Ownable {
         address patientId;
         uint256 timestamp;
         string recordType;
-        string ipfsHash;     // Stores encrypted IPFS file hash
+        string ipfsHash;     
         string notes;
         uint8 version;
-        bool isEncrypted;    // NEW: Indicates if IPFS file is encrypted
+        bool isEncrypted;    
     }
 
     // ===================== State Variables =====================
