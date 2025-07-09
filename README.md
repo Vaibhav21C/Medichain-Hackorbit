@@ -55,3 +55,25 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 
 **📋 Patient Dashboard**
 ![Dashboard Screenshot](./screenshots/Dashboard.png)
+
+**📋 Doctor Dashboard**
+![Dashboard Screenshot](./screenshots/Doctor_dashboard.png)
+ </details>
+ ---
+
+## 🛠️ Installation
+
+# Clone the repository
+git clone [https://github.com/Vaibhav21C/Medichain-Hackorbit]
+cd medichain
+
+# Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+
+# Run the rasa server
+rasa run --enable-api --cors "*"
+
+# Run the Flask server
+python app.py
+
