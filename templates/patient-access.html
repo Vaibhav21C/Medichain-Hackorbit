@@ -15,7 +15,6 @@
 </head>
 <body class="dashboard-body">
     <div class="dashboard-container">
-        <!-- Sidebar Navigation -->
         <aside class="dashboard-sidebar">
             <div class="sidebar-header">
                 <a href="{{ url_for('patient_dashboard') }}" class="logo">>
@@ -50,9 +49,8 @@
             </div>
         </aside>
 
-        <!-- Main Content Area -->
         <main class="dashboard-main">
-            <!-- Top Navigation Bar -->
+           
             <header class="dashboard-header">
                 <div class="header-search">
                     <form action="{{ url_for('patient_search') }}" method="GET" class="search-form">
@@ -73,7 +71,6 @@
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="content-header">
                     <h1>Doctor Access Management</h1>
@@ -82,7 +79,6 @@
                     </button>
                 </div>
                 
-                <!-- Access Management Tabs -->
                 <div class="tabs-container">
                     <div class="tabs-header">
                         <button class="tab-btn active" data-tab="active-tab">
@@ -96,7 +92,6 @@
                         </button>
                     </div>
 
-                    <!-- Active Access Tab -->
                     <div class="tab-content active" id="active-tab">
                         <div class="doctors-grid">
                             {% for doc in active_access %}
@@ -141,7 +136,6 @@
                         </div>
                     </div>
 
-                    <!-- Pending Requests Tab -->
                     <div class="tab-content" id="pending-tab">
                         <div class="doctors-grid">
                             {% for req in pending_requests %}
@@ -189,7 +183,6 @@
                         </div>
                     </div>
 
-                    <!-- Revoked Access Tab -->
                     <div class="tab-content" id="revoked-tab">
                         <div class="doctors-grid">
                             {% for doc in revoked_access %}
@@ -233,7 +226,6 @@
                 </div>
 
 
-    <!-- Grant Access Modal -->
 <div class="modal" id="grantAccessModal">
     <div class="modal-content">
         <div class="modal-header">
