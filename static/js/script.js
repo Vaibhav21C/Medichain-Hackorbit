@@ -1,10 +1,8 @@
-// static/js/script.js
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ===================================
-    // === NAVIGATION & HEADER LOGIC ===
-    // ===================================
+  
+   
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -32,9 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ===================================
-    // === CHATBOT WIDGET JAVASCRIPT ===
-    // ===================================
+   
     const chatButton = document.getElementById('chat-widget-button');
     const chatContainer = document.getElementById('chat-widget-container');
     const closeChatButton = document.getElementById('close-chat-widget');
@@ -42,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
 
-    // Toggle chat widget visibility
+    
     chatButton.addEventListener('click', () => {
         chatContainer.classList.toggle('show-widget');
     });
@@ -51,19 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
         chatContainer.classList.remove('show-widget');
     });
 
-    // Handle form submission
     chatForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const userInput = chatInput.value.trim();
 
         if (!userInput) return;
 
-        // Display user's message in the chat
+       
         addMessage(userInput, 'user');
         chatInput.value = '';
 
         try {
-            // Send user message to the Flask backend
             const response = await fetch('/chat', {
                 method: 'POST',
                 headers: {
@@ -75,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             const botReply = data.response;
 
-            // Display bot's reply in the chat
+            
             addMessage(botReply, 'bot');
 
         } catch (error) {
@@ -84,15 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Helper function to add a message to the chat window
     function addMessage(text, sender) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', `${sender}-message`);
         messageElement.textContent = text;
         chatMessages.appendChild(messageElement);
 
-        // Scroll to the bottom of the chat
+       
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-}); // <-- THE LISTENER NOW CORRECTLY WRAPS EVERYTHING
+}); 
