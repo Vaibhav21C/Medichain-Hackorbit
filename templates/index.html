@@ -45,7 +45,7 @@
                 <div class="hero-text">
                     <h1>Revolutionizing Healthcare with Blockchain Technology</h1>
                     <p>Secure, transparent, and efficient management of your medical records. Take control of your health data with MediChain.</p>
-                    <a href="login.html" class="btn btn-primary btn-large">Get Started</a>
+                    <a href="{{ url_for('login') }}" class="btn btn-primary btn-large">Get Started</a>
                 </div>
                 <div class="hero-image">
                     <img src="https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Doctor with technology interface">
@@ -131,6 +131,33 @@
         <div class="footer-bottom">
             <p>© 2025 MediChain. 
     </footer>
+       <footer class="footer">
+        <!-- (your existing footer content) -->
+    </footer>
+
+    <!-- ================================================== -->
+    <!-- === START CHATBOT WIDGET === -->
+    <!-- ================================================== -->
+    <div class="chat-widget-button" id="chat-widget-button">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="chat-widget-container" id="chat-widget-container">
+        <div class="chat-widget-header">
+            <h3>MediChain Assistant</h3>
+            <button id="close-chat-widget">×</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+             <!-- Bot initial message -->
+             <div class="message bot-message">
+                Hello! I am the MediChain assistant. How can I help you?
+            </div>
+        </div>
+        <form class="chat-input-form" id="chat-input-form">
+            <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off">
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
