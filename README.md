@@ -58,3 +58,22 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 
 **📋 Doctor Dashboard**
 ![Dashboard Screenshot](./screenshots/Doctor_dashboard.png)
+ </details>
+ ---
+
+## 🛠️ Installation
+
+# Clone the repository
+git clone https://github.com/your-username/medichain.git
+cd medichain
+
+# Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+
+# Run the rasa server
+rasa run --enable-api --cors "*"
+
+# Run the Flask server
+python app.py
+
