@@ -64,7 +64,7 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 ## 🛠️ Installation
 
 # Clone the repository
-git clone https://github.com/your-username/medichain.git
+git clone [(https://github.com/Vaibhav21C/Medichain-Hackorbit)]
 cd medichain
 
 # Create a virtual environment
