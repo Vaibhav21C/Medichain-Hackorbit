@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, g, redirect,url_for,jsonify, session, flash
 import sqlite3
 import os
-import requests # <-- ADD THIS IMPORT
+import requests 
 from datetime import datetime, timedelta
 app = Flask(__name__)
 app.secret_key = os.urandom(24) 
@@ -640,9 +640,7 @@ def patient_settings():
     return render_template("patient-settings.html", name=session.get("name"))
 
 
-# =====================================================================
-# === NEW CHATBOT ENDPOINT ===
-# =====================================================================
+
 @app.route('/chat', methods=['POST'])
 def chat():
     try:

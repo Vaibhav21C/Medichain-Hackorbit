@@ -1,10 +1,8 @@
 import sqlite3
 
-# Connect to the database
 conn = sqlite3.connect("medica.db")
 cur = conn.cursor()
 
-# === Create users table ===    
 cur.execute("""
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
 )
 """)
 
-# === Create requests table ===
+
 cur.execute("""
 CREATE TABLE IF NOT EXISTS requests (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -47,12 +45,12 @@ cur.execute("""CREATE TABLE IF NOT EXISTS doctor_notes (
     date TEXT
 )""")
 
-# Commit the changes
+
 conn.commit()
 
 print("Database and tables initialized successfully.\n")
 
-# === Optional: Print current users for verification ===
+
 cur.execute("SELECT id, name, email, role FROM users")
 rows = cur.fetchall()
 
@@ -63,5 +61,5 @@ if rows:
 else:
     print("No users found in the database.")
 
-# Close the connection
+
 conn.close()
