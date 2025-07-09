@@ -60,7 +60,7 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 ![Dashboard Screenshot](./screenshots/Doctor_dashboard.png)
 
 **📋 Doctor Access**
-![Dashboard Screenshot](./screenshots/Doctoraccess.png)
+![Dashboard Screenshot](./screenshots/Doctor%20access.png))
 
 **📋 Access Requests**
 ![Dashboard Screenshot](./screenshots/Access-requests.png)
@@ -69,7 +69,7 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 ![Dashboard Screenshot](./screenshots/Medical_records.png)
 
 **📋 My Patients**
-![Dashboard Screenshot](./screenshots/my-patients.png)
+![Dashboard Screenshot](./screenshots/my_patients.png)
 
 **📋 Diagnosis Notes**
 ![Dashboard Screenshot](./screenshots/Diagnosis-Notes.png)
