@@ -58,6 +58,27 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 
 **📋 Doctor Dashboard**
 ![Dashboard Screenshot](./screenshots/Doctor_dashboard.png)
+
+**📋 Doctor Access**
+![Dashboard Screenshot](./screenshots/Doctor%20access.png))
+
+**📋 Access Requests**
+![Dashboard Screenshot](./screenshots/Access-requests.png)
+
+**📋 Medical Records**
+![Dashboard Screenshot](./screenshots/Medical_records.png)
+
+**📋 My Patients**
+![Dashboard Screenshot](./screenshots/my_patients.png)
+
+**📋 Diagnosis Notes**
+![Dashboard Screenshot](./screenshots/Diagnosis-Notes.png)
+
+**📋Doctors Settings**
+![Dashboard Screenshot](./screenshots/Doctor-setting.png)
+
+**📋 Patient Settings**
+![Dashboard Screenshot](./screenshots/Patient-setting.png)
  </details>
  ---
 
