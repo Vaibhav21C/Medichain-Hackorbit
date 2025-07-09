@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Requests - MediChain</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-plus-square"></i> MediChain
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="doctor-dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="doctor-patients.html">
+                            <i class="fas fa-users"></i> My Patients
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="doctor-requests.html">
+                            <i class="fas fa-user-plus"></i> Access Requests
+                        </a>
+                    </li>
+                    <li>
+                        <a href="doctor-notes.html">
+                            <i class="fas fa-notes-medical"></i> Diagnosis Notes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="doctor-settings.html">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Top Navigation Bar -->
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search patients...">
+                </div>
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Doctor Profile">
+                        <span>Dr. Sarah Johnson</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="content-header">
+                    <h1>Patient Access Requests</h1>
+                    <button class="btn btn-primary" id="newRequestBtn">
+                        <i class="fas fa-plus"></i> New Request
+                    </button>
+                </div>
+                
+                <!-- Access Management Tabs -->
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="pending">Pending (5)</button>
+                        <button class="tab-btn" data-tab="approved">Approved (24)</button>
+                        <button class="tab-btn" data-tab="denied">Denied (3)</button>
+                    </div>
+                    
+                    <!-- Pending Requests Tab -->
+                    <div class="tab-content active" id="pending-tab">
+                        <div class="records-table-container">
+                            <table class="records-table">
+                                <thead>
+                                    <tr>
+                                        <th>Patient</th>
+                                        <th>Request Date</th>
+                                        <th>Access Type</th>
+                                        <th>Reason</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Alice Johnson" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>Alice Johnson</span>
+                                            </div>
+                                        </td>
+                                        <td>June 2, 2023</td>
+                                        <td>Full Access</td>
+                                        <td>Cardiology Consultation</td>
+                                        <td><span class="access-badge pending">Awaiting Approval</span></td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Edit Request">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Cancel Request">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Robert Davis" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>Robert Davis</span>
+                                            </div>
+                                        </td>
+                                        <td>June 1, 2023</td>
+                                        <td>Limited Access</td>
+                                        <td>Follow-up Consultation</td>
+                                        <td><span class="access-badge pending">Awaiting Approval</span></td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Edit Request">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Cancel Request">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Jennifer Lee" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>Jennifer Lee</span>
+                                            </div>
+                                        </td>
+                                        <td>May 30, 2023</td>
+                                        <td>Limited Access</td>
+                                        <td>Prescription Review</td>
+                                        <td><span class="access-badge pending">Awaiting Approval</span></td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Edit Request">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Cancel Request">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Approved Requests Tab -->
+                    <div class="tab-content" id="approved-tab">
+                        <div class="records-table-container">
+                            <table class="records-table">
+                                <thead>
+                                    <tr>
+                                        <th>Patient</th>
+                                        <th>Approved Date</th>
+                                        <th>Access Type</th>
+                                        <th>Expiration</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="John Doe" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>John Doe</span>
+                                            </div>
+                                        </td>
+                                        <td>May 15, 2023</td>
+                                        <td>Full Access</td>
+                                        <td>May 15, 2024</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Records">
+                                                    <i class="fas fa-folder-open"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Add Note">
+                                                    <i class="fas fa-notes-medical"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Emma Wilson" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>Emma Wilson</span>
+                                            </div>
+                                        </td>
+                                        <td>May 10, 2023</td>
+                                        <td>Limited Access</td>
+                                        <td>November 10, 2023</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Records">
+                                                    <i class="fas fa-folder-open"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Add Note">
+                                                    <i class="fas fa-notes-medical"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Denied Requests Tab -->
+                    <div class="tab-content" id="denied-tab">
+                        <div class="records-table-container">
+                            <table class="records-table">
+                                <thead>
+                                    <tr>
+                                        <th>Patient</th>
+                                        <th>Request Date</th>
+                                        <th>Denied Date</th>
+                                        <th>Reason</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="David Miller" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>David Miller</span>
+                                            </div>
+                                        </td>
+                                        <td>April 25, 2023</td>
+                                        <td>April 27, 2023</td>
+                                        <td>Patient declined access</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="Request Again">
+                                                    <i class="fas fa-redo"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Request Modal -->
+    <div class="modal" id="newRequestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Request Patient Access</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newRequestForm">
+                    <div class="form-group">
+                        <label for="patient-search">Search Patient</label>
+                        <div class="search-input">
+                            <input type="text" id="patient-search" placeholder="Enter patient name or ID">
+                            <button type="button" class="btn-icon">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="access-level">Access Level</label>
+                        <select id="access-level">
+                            <option value="full">Full Access</option>
+                            <option value="limited" selected>Limited Access</option>
+                            <option value="emergency">Emergency Access</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Record Types</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="record-type" value="examinations" checked>
+                                Examinations
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="record-type" value="prescriptions" checked>
+                                Prescriptions
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="record-type" value="lab-results" checked>
+                                Lab Results
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="record-type" value="imaging">
+                                Imaging
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="record-type" value="allergies">
+                                Allergies
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="request-reason">Reason for Request</label>
+                        <textarea id="request-reason" rows="3" placeholder="Explain why you need access to this patient's records"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="access-duration">Access Duration</label>
+                        <select id="access-duration">
+                            <option value="1month">1 Month</option>
+                            <option value="3months">3 Months</option>
+                            <option value="6months" selected>6 Months</option>
+                            <option value="1year">1 Year</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Logs - MediChain</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="{{ url_for('patient_dashboard') }}" class="logo">>
+                    <i class="fas fa-plus-square"></i>MediChain
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+            <ul>
+                <li class="{% if request.path == url_for('patient_dashboard') %}active{% endif %}">
+                    <a href="{{ url_for('patient_dashboard') }}">
+                    <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li class="{% if request.path == url_for('patient_records') %}active{% endif %}">
+                    <a href="{{ url_for('patient_records') }}">
+                    <i class="fas fa-file-medical"></i> Medical Records
+                    </a>
+                </li>
+                <li class="{% if request.path == url_for('patient_access') %}active{% endif %}">
+                    <a href="{{ url_for('patient_access') }}">
+                    <i class="fas fa-user-md"></i> Doctor Access
+                    </a>
+                </li>
+                <li class="{% if request.path == url_for('patient_logs') %}active{% endif %}">
+                    <a href="{{ url_for('patient_logs') }}">
+                    <i class="fas fa-history"></i> Access Logs
+                    </a>
+                </li>
+                <li class="{% if request.path == url_for('patient_settings') %}active{% endif %}">
+                    <a href="{{ url_for('patient_settings') }}">
+                    <i class="fas fa-cog"></i> Settings
+                    </a>
+                </li>
+            </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="{{ url_for('logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Top Navigation Bar -->
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <form action="{{ url_for('patient_search') }}" method="GET" class="search-form">
+                        <i class="fas fa-search"></i>
+                        <input type="text" name="q" placeholder="Search records..." required>
+                    </form>
+                </div>
+
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://shorturl.at/6OqI1" alt="User Profile">
+                        <span>{{ name }}</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <h1>Access Logs</h1>
+                <p class="content-description">Track who has accessed your medical records and when.</p>
+                
+                <!-- Logs Filter -->
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="log-type">Activity Type</label>
+                        <select id="log-type">
+                            <option value="all">All Activities</option>
+                            <option value="view">Record Views</option>
+                            <option value="download">Downloads</option>
+                            <option value="access">Access Changes</option>
+                            <option value="upload">Uploads</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="log-date">Time Period</label>
+                        <select id="log-date">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month" selected>This Month</option>
+                            <option value="year">This Year</option>
+                            <option value="all">All Time</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="log-user">User</label>
+                        <select id="log-user">
+                            <option value="all">All Users</option>
+                            <option value="dr-johnson">Dr. Sarah Johnson</option>
+                            <option value="dr-chen">Dr. Michael Chen</option>
+                            <option value="dr-wilson">Dr. Emily Wilson</option>
+                            <option value="self">Myself</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Activity Timeline -->
+<div class="timeline-container">
+    {% set last_date = None %}
+    {% for log in timeline_logs %}
+        {% set log_date = log.timestamp.strftime('%B %d, %Y') %}
+        {% if loop.first or log_date != last_date %}
+            <div class="timeline-date">
+                {% if log.timestamp.date() == current_date %}
+                    Today
+                {% elif log.timestamp.date() == yesterday %}
+                    Yesterday
+                {% else %}
+                    {{ log_date }}
+                {% endif %}
+            </div>
+            {% set last_date = log_date %}
+        {% endif %}
+
+        <div class="timeline-item">
+            <div class="timeline-icon {{ log.action }}">
+                <i class="fas fa-{{ 
+                    'eye' if log.action == 'view' else
+                    'download' if log.action == 'download' else
+                    'upload' if log.action == 'upload' else
+                    'key' if log.action == 'access' else
+                    'user-slash' if log.action == 'revoke' else
+                    'info-circle'
+                }}"></i>
+            </div>
+            <div class="timeline-content">
+                <div class="timeline-header">
+                    <h3>{{ log.title }}</h3>
+                    <span class="timeline-time">{{ log.timestamp.strftime('%I:%M %p') }}</span>
+                </div>
+                <p>
+                    <strong>{{ log.actor }}</strong>
+                    {{ log.description }}
+                </p>
+                <div class="timeline-details">
+                    {% for detail in log.details %}
+                        <span><i class="fas fa-{{ detail.icon }}"></i> {{ detail.text }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Load More Button -->
+<div class="load-more-container">
+    <button class="btn btn-outline">
+        <i class="fas fa-sync"></i> Load More
+    </button>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

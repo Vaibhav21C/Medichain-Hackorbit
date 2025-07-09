@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Settings - MediChain</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-plus-square"></i> MediChain
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-doctors.html">
+                            <i class="fas fa-user-md"></i> Doctors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-hospitals.html">
+                            <i class="fas fa-hospital"></i> Hospitals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-patients.html">
+                            <i class="fas fa-users"></i> Patients
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-verification.html">
+                            <i class="fas fa-check-circle"></i> Verification
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Top Navigation Bar -->
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search settings...">
+                </div>
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Admin Profile">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <h1>System Settings</h1>
+                <p class="welcome-message">Configure system-wide settings and preferences for the MediChain platform.</p>
+                
+                <!-- Settings Tabs -->
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="general">General</button>
+                        <button class="tab-btn" data-tab="security">Security</button>
+                        <button class="tab-btn" data-tab="verification">Verification</button>
+                        <button class="tab-btn" data-tab="notifications">Notifications</button>
+                        <button class="tab-btn" data-tab="blockchain">Blockchain</button>
+                    </div>
+                    
+                    <!-- General Settings Tab -->
+                    <div class="tab-content active" id="general-tab">
+                        <form id="generalSettingsForm" class="settings-form">
+                            <div class="settings-section">
+                                <h3>Platform Information</h3>
+                                
+                                <div class="form-group">
+                                    <label for="platform-name">Platform Name</label>
+                                    <input type="text" id="platform-name" value="MediChain" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="platform-description">Platform Description</label>
+                                    <textarea id="platform-description" rows="3">MediChain is a secure blockchain-based platform for managing medical records and healthcare provider access.</textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contact-email">Contact Email</label>
+                                    <input type="email" id="contact-email" value="support@medichain.example.com" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="support-phone">Support Phone</label>
+                                    <input type="tel" id="support-phone" value="+1 (555) 123-4567">
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Regional Settings</h3>
+                                
+                                <div class="form-group">
+                                    <label for="timezone">Default Timezone</label>
+                                    <select id="timezone">
+                                        <option value="UTC-8">Pacific Time (UTC-8)</option>
+                                        <option value="UTC-7">Mountain Time (UTC-7)</option>
+                                        <option value="UTC-6">Central Time (UTC-6)</option>
+                                        <option value="UTC-5" selected>Eastern Time (UTC-5)</option>
+                                        <option value="UTC">UTC</option>
+                                        <option value="UTC+1">Central European Time (UTC+1)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="date-format">Date Format</label>
+                                    <select id="date-format">
+                                        <option value="MM/DD/YYYY" selected>MM/DD/YYYY</option>
+                                        <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                        <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="language">Default Language</label>
+                                    <select id="language">
+                                        <option value="en" selected>English</option>
+                                        <option value="es">Spanish</option>
+                                        <option value="fr">French</option>
+                                        <option value="de">German</option>
+                                        <option value="zh">Chinese</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>User Registration</h3>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="allow-registration" checked>
+                                        Allow new user registrations
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="email-verification" checked>
+                                        Require email verification
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="admin-approval">
+                                        Require admin approval for new accounts
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save General Settings</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Security Settings Tab -->
+                    <div class="tab-content" id="security-tab">
+                        <form id="securitySettingsForm" class="settings-form">
+                            <div class="settings-section">
+                                <h3>Password Policy</h3>
+                                
+                                <div class="form-group">
+                                    <label for="min-password-length">Minimum Password Length</label>
+                                    <input type="number" id="min-password-length" value="8" min="6" max="20">
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-uppercase" checked>
+                                        Require uppercase letters
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-numbers" checked>
+                                        Require numbers
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-special" checked>
+                                        Require special characters
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="password-expiry">Password Expiry (days)</label>
+                                    <input type="number" id="password-expiry" value="90" min="0" max="365">
+                                    <small>Set to 0 for no expiration</small>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Two-Factor Authentication</h3>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="enable-2fa" checked>
+                                        Enable Two-Factor Authentication
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="2fa-method">Default 2FA Method</label>
+                                    <select id="2fa-method">
+                                        <option value="app" selected>Authenticator App</option>
+                                        <option value="sms">SMS</option>
+                                        <option value="email">Email</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-2fa-admin" checked>
+                                        Require 2FA for admin accounts
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-2fa-doctor">
+                                        Require 2FA for doctor accounts
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Session Settings</h3>
+                                
+                                <div class="form-group">
+                                    <label for="session-timeout">Session Timeout (minutes)</label>
+                                    <input type="number" id="session-timeout" value="30" min="5" max="120">
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="force-logout-password-change" checked>
+                                        Force logout on password change
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Security Settings</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Verification Settings Tab -->
+                    <div class="tab-content" id="verification-tab">
+                        <form id="verificationSettingsForm" class="settings-form">
+                            <div class="settings-section">
+                                <h3>Doctor Verification</h3>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-license" checked>
+                                        Require medical license
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-id" checked>
+                                        Require government ID
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-certification" checked>
+                                        Require board certification
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="license-verification-method">License Verification Method</label>
+                                    <select id="license-verification-method">
+                                        <option value="manual" selected>Manual verification by admin</option>
+                                        <option value="api">Automated API verification</option>
+                                        <option value="both">Both manual and automated</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Hospital Verification</h3>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-hospital-license" checked>
+                                        Require hospital license
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-business-registration" checked>
+                                        Require business registration
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="require-accreditation">
+                                        Require accreditation documents
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Verification Workflow</h3>
+                                
+                                <div class="form-group">
+                                    <label for="verification-expiry">Verification Expiry (days)</label>
+                                    <input type="number" id="verification-expiry" value="365" min="0" max="1095">
+                                    <small>Set to 0 for no expiration</small>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="auto-notify-expiry" checked>
+                                        Automatically notify on approaching expiry
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="expiry-notification-days">Expiry Notification (days before)</label>
+                                    <input type="number" id="expiry-notification-days" value="30" min="1" max="90">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Verification Settings</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Notifications Settings Tab -->
+                    <div class="tab-content" id="notifications-tab">
+                        <form id="notificationsSettingsForm" class="settings-form">
+                            <div class="settings-section">
+                                <h3>Email Notifications</h3>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="email-new-registration" checked>
+                                        New user registrations
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="email-verification-requests" checked>
+                                        New verification requests
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="email-access-requests" checked>
+                                        Doctor access requests
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="email-system-alerts" checked>
+                                        System alerts and warnings
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>In-App Notifications</h3>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="inapp-new-registration" checked>
+                                        New user registrations
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="inapp-verification-requests" checked>
+                                        New verification requests
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="inapp-access-requests" checked>
+                                        Doctor access requests
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="inapp-system-alerts" checked>
+                                        System alerts and warnings
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Email Configuration</h3>
+                                
+                                <div class="form-group">
+                                    <label for="smtp-server">SMTP Server</label>
+                                    <input type="text" id="smtp-server" value="smtp.example.com">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="smtp-port">SMTP Port</label>
+                                    <input type="number" id="smtp-port" value="587">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="smtp-username">SMTP Username</label>
+                                    <input type="text" id="smtp-username" value="notifications@medichain.example.com">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="smtp-password">SMTP Password</label>
+                                    <input type="password" id="smtp-password" value="********">
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="smtp-ssl" checked>
+                                        Use SSL/TLS
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Notification Settings</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Blockchain Settings Tab -->
+                    <div class="tab-content" id="blockchain-tab">
+                        <form id="blockchainSettingsForm" class="settings-form">
+                            <div class="settings-section">
+                                <h3>Blockchain Configuration</h3>
+                                
+                                <div class="form-group">
+                                    <label for="blockchain-network">Blockchain Network</label>
+                                    <select id="blockchain-network">
+                                        <option value="ethereum" selected>Ethereum</option>
+                                        <option value="hyperledger">Hyperledger Fabric</option>
+                                        <option value="polygon">Polygon</option>
+                                        <option value="solana">Solana</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="node-url">Node URL</label>
+                                    <input type="text" id="node-url" value="https://mainnet.infura.io/v3/your-api-key">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contract-address">Smart Contract Address</label>
+                                    <input type="text" id="contract-address" value="0x1234567890abcdef1234567890abcdef12345678">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="gas-price-strategy">Gas Price Strategy</label>
+                                    <select id="gas-price-strategy">
+                                        <option value="fast">Fast</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="slow">Slow</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Data Storage</h3>
+                                
+                                <div class="form-group">
+                                    <label for="storage-method">Medical Records Storage</label>
+                                    <select id="storage-method">
+                                        <option value="ipfs" selected>IPFS</option>
+                                        <option value="s3">Amazon S3</option>
+                                        <option value="azure">Azure Blob Storage</option>
+                                        <option value="hybrid">Hybrid (IPFS + Cloud)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="ipfs-gateway">IPFS Gateway</label>
+                                    <input type="text" id="ipfs-gateway" value="https://ipfs.io/ipfs/">
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="encrypt-storage" checked>
+                                        Encrypt data before storage
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="encryption-algorithm">Encryption Algorithm</label>
+                                    <select id="encryption-algorithm">
+                                        <option value="aes-256-gcm" selected>AES-256-GCM</option>
+                                        <option value="aes-256-cbc">AES-256-CBC</option>
+                                        <option value="chacha20-poly1305">ChaCha20-Poly1305</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Transaction Settings</h3>
+                                
+                                <div class="form-group">
+                                    <label for="transaction-confirmation">Required Confirmations</label>
+                                    <input type="number" id="transaction-confirmation" value="12" min="1" max="50">
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="auto-retry-failed" checked>
+                                        Auto-retry failed transactions
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="max-retry-attempts">Max Retry Attempts</label>
+                                    <input type="number" id="max-retry-attempts" value="3" min="1" max="10">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Blockchain Settings</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="notification-message">Settings saved successfully!</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+    <script>
+        // Initialize tabs functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current button and content
+                    btn.classList.add('active');
+                    document.getElementById(tabId + '-tab').classList.add('active');
+                });
+            });
+            
+            // Form submissions
+            const forms = document.querySelectorAll('.settings-form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Here you would normally save the settings to the server
+                    // For now, just show a success notification
+                    showNotification('Settings saved successfully!');
+                });
+            });
+        });
+        
+        // Show notification function
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notification-message');
+            
+            notificationMessage.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

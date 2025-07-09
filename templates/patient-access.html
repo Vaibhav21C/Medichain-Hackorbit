@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Access - MediChain</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,70 +15,65 @@
 </head>
 <body class="dashboard-body">
     <div class="dashboard-container">
-        
+        <!-- Sidebar Navigation -->
         <aside class="dashboard-sidebar">
             <div class="sidebar-header">
-                <a href="index.html" class="logo">
-                    <i class="fas fa-plus-square"></i> MediChain
+                <a href="{{ url_for('patient_dashboard') }}" class="logo">>
+                    <i class="fas fa-plus-square"></i>MediChain
                 </a>
             </div>
             <nav class="sidebar-nav">
-                <ul>
-                    <li>
-                        <a href="patient-dashboard.html">
-                            <i class="fas fa-home"></i> Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="patient-records.html">
-                            <i class="fas fa-file-medical"></i> Medical Records
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="patient-access.html">
-                            <i class="fas fa-user-md"></i> Doctor Access
-                        </a>
-                    </li>
-                    <li>
-                        <a href="patient-logs.html">
-                            <i class="fas fa-history"></i> Access Logs
-                        </a>
-                    </li>
-                    <li>
-                        <a href="patient-settings.html">
-                            <i class="fas fa-cog"></i> Settings
-                        </a>
-                    </li>
-                </ul>
+            <ul>
+                <li class="{% if request.path == url_for('patient_dashboard') %}active{% endif %}">
+                    <a href="{{ url_for('patient_dashboard') }}">
+                    <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li class="{% if request.path == url_for('patient_records') %}active{% endif %}">
+                    <a href="{{ url_for('patient_records') }}">
+                    <i class="fas fa-file-medical"></i> Medical Records
+                    </a>
+                </li>
+                <li class="{% if request.path == url_for('patient_access') %}active{% endif %}">
+                    <a href="{{ url_for('patient_access') }}">
+                    <i class="fas fa-user-md"></i> Doctor Access
+                    </a>
+                <li class="{% if request.path == url_for('patient_settings') %}active{% endif %}">
+                    <a href="{{ url_for('patient_settings') }}">
+                    <i class="fas fa-cog"></i> Settings
+                    </a>
+                </li>
+            </ul>
             </nav>
             <div class="sidebar-footer">
-                <a href="index.html" class="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
+                <a href="{{ url_for('logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </aside>
 
-        
+        <!-- Main Content Area -->
         <main class="dashboard-main">
-            
+            <!-- Top Navigation Bar -->
             <header class="dashboard-header">
                 <div class="header-search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search doctors...">
+                    <form action="{{ url_for('patient_search') }}" method="GET" class="search-form">
+                        <i class="fas fa-search"></i>
+                        <input type="text" name="q" placeholder="Search records..." required>
+                    </form>
                 </div>
+
                 <div class="header-user">
                     <div class="notifications">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge">3</span>
                     </div>
                     <div class="user-profile">
-        
-                        <span>John Doe</span>
+                        <img src="https://shorturl.at/6OqI1" alt="User Profile">
+                        <span>{{ name }}</span>
                     </div>
                 </div>
             </header>
 
-           
+            <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="content-header">
                     <h1>Doctor Access Management</h1>
@@ -87,307 +82,242 @@
                     </button>
                 </div>
                 
-                
+                <!-- Access Management Tabs -->
                 <div class="tabs-container">
                     <div class="tabs-header">
-                        <button class="tab-btn active" data-tab="active">Active Access (3)</button>
-                        <button class="tab-btn" data-tab="pending">Pending Requests (2)</button>
-                        <button class="tab-btn" data-tab="revoked">Revoked Access (1)</button>
+                        <button class="tab-btn active" data-tab="active-tab">
+                            Active Access ({{ access_counts.active }})
+                        </button>
+                        <button class="tab-btn" data-tab="pending-tab">
+                            Pending Requests ({{ access_counts.pending }})
+                        </button>
+                        <button class="tab-btn" data-tab="revoked-tab">
+                            Revoked Access ({{ access_counts.revoked }})
+                        </button>
                     </div>
-                    
-                    
+
+                    <!-- Active Access Tab -->
                     <div class="tab-content active" id="active-tab">
                         <div class="doctors-grid">
+                            {% for doc in active_access %}
                             <div class="doctor-access-card">
                                 <div class="doctor-info">
-                                    
+                                    <img src="{{ doc.profile_img or 'https://randomuser.me/api/portraits/men/75.jpg' }}" alt="{{ doc.name }}">
                                     <div>
-                                        <h3>Dr. Sarah Johnson</h3>
-                                        <p>Cardiologist • City Hospital</p>
-                                        <span class="access-badge active">Active Since: May 10, 2023</span>
+                                        <h3>{{ doc.name }}</h3>
+                                        <p>{{ doc.specialization }} • {{ doc.hospital }}</p>
+                                        <span class="access-badge active">Active Since: {{ doc.start_date }}</span>
                                     </div>
                                 </div>
                                 <div class="access-details">
                                     <div class="access-item">
                                         <span>Access Level:</span>
-                                        <span>Full Access</span>
+                                        <span>{{ doc.access_level }}</span>
                                     </div>
                                     <div class="access-item">
                                         <span>Record Types:</span>
-                                        <span>All Records</span>
+                                        <span>{{ doc.record_types }}</span>
                                     </div>
                                     <div class="access-item">
                                         <span>Expiration:</span>
-                                        <span>May 10, 2024</span>
+                                        <span>{{ doc.expiration_date }}</span>
                                     </div>
                                 </div>
                                 <div class="access-actions">
                                     <button class="btn btn-outline btn-small">
                                         <i class="fas fa-edit"></i> Modify
                                     </button>
-                                    <button class="btn btn-danger btn-small">
-                                        <i class="fas fa-times"></i> Revoke
-                                    </button>
+                                    <form method="POST" action="{{ url_for('revoke_access') }}" style="display:inline;">
+                                        <input type="hidden" name="request_id" value="{{ doc.request_id }}">
+                                        <button class="btn btn-danger btn-small" type="submit">
+                                            <i class="fas fa-times"></i> Revoke
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
-                            
-                            <div class="doctor-access-card">
-                                <div class="doctor-info">
-                                   
-                                    <div>
-                                        <h3>Dr. Michael Chen</h3>
-                                        <p>General Physician • MediCare Clinic</p>
-                                        <span class="access-badge active">Active Since: April 15, 2023</span>
-                                    </div>
-                                </div>
-                                <div class="access-details">
-                                    <div class="access-item">
-                                        <span>Access Level:</span>
-                                        <span>Limited Access</span>
-                                    </div>
-                                    <div class="access-item">
-                                        <span>Record Types:</span>
-                                        <span>Prescriptions, Lab Results</span>
-                                    </div>
-                                    <div class="access-item">
-                                        <span>Expiration:</span>
-                                        <span>October 15, 2023</span>
-                                    </div>
-                                </div>
-                                <div class="access-actions">
-                                    <button class="btn btn-outline btn-small">
-                                        <i class="fas fa-edit"></i> Modify
-                                    </button>
-                                    <button class="btn btn-danger btn-small">
-                                        <i class="fas fa-times"></i> Revoke
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="doctor-access-card">
-                                <div class="doctor-info">
-                                    
-                                    <div>
-                                        <h3>Dr. Emily Wilson</h3>
-                                        <p>Pathologist • Central Lab</p>
-                                        <span class="access-badge active">Active Since: March 22, 2023</span>
-                                    </div>
-                                </div>
-                                <div class="access-details">
-                                    <div class="access-item">
-                                        <span>Access Level:</span>
-                                        <span>Limited Access</span>
-                                    </div>
-                                    <div class="access-item">
-                                        <span>Record Types:</span>
-                                        <span>Lab Results Only</span>
-                                    </div>
-                                    <div class="access-item">
-                                        <span>Expiration:</span>
-                                        <span>September 22, 2023</span>
-                                    </div>
-                                </div>
-                                <div class="access-actions">
-                                    <button class="btn btn-outline btn-small">
-                                        <i class="fas fa-edit"></i> Modify
-                                    </button>
-                                    <button class="btn btn-danger btn-small">
-                                        <i class="fas fa-times"></i> Revoke
-                                    </button>
-                                </div>
-                            </div>
+                            {% else %}
+                            <p class="empty-msg">No active access granted yet.</p>
+                            {% endfor %}
                         </div>
                     </div>
-                    
-                   
+
+                    <!-- Pending Requests Tab -->
                     <div class="tab-content" id="pending-tab">
                         <div class="doctors-grid">
+                            {% for req in pending_requests %}
                             <div class="doctor-access-card">
                                 <div class="doctor-info">
-                                   
+                                    <img src="{{ req.profile_img or 'https://randomuser.me/api/portraits/women/22.jpg' }}" alt="{{ req.name }}">
                                     <div>
-                                        <h3>Dr. James Wilson</h3>
-                                        <p>Neurologist • Metro Hospital</p>
-                                        <span class="access-badge pending">Requested: June 2, 2023</span>
+                                        <h3>{{ req.name }}</h3>
+                                        <p>{{ req.specialization }} • {{ req.hospital }}</p>
+                                        <span class="access-badge pending">Requested: {{ req.request_date }}</span>
                                     </div>
                                 </div>
                                 <div class="access-details">
                                     <div class="access-item">
                                         <span>Requested Access:</span>
-                                        <span>Limited Access</span>
+                                        <span>{{ req.access_level }}</span>
                                     </div>
                                     <div class="access-item">
                                         <span>Record Types:</span>
-                                        <span>Imaging, Examinations</span>
+                                        <span>{{ req.record_types }}</span>
                                     </div>
                                     <div class="access-item">
                                         <span>Reason:</span>
-                                        <span>Consultation for headaches</span>
+                                        <span>{{ req.reason }}</span>
                                     </div>
                                 </div>
                                 <div class="access-actions">
-                                    <button class="btn btn-primary btn-small">
-                                        <i class="fas fa-check"></i> Approve
-                                    </button>
-                                    <button class="btn btn-danger btn-small">
-                                        <i class="fas fa-times"></i> Deny
-                                    </button>
+                                    <form method="POST" action="{{ url_for('approve_request') }}" style="display:inline;">
+                                        <input type="hidden" name="request_id" value="{{ req.request_id }}">
+                                        <button class="btn btn-primary btn-small" type="submit">
+                                            <i class="fas fa-check"></i> Approve
+                                        </button>
+                                    </form>
+                                    <form method="POST" action="{{ url_for('deny_request') }}" style="display:inline;">
+                                        <input type="hidden" name="request_id" value="{{ req.request_id }}">
+                                        <button class="btn btn-danger btn-small" type="submit">
+                                            <i class="fas fa-times"></i> Deny
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
-                            
-                            <div class="doctor-access-card">
-                                <div class="doctor-info">
-                                   
-                                    <div>
-                                        <h3>Dr. Amanda Lee</h3>
-                                        <p>Dermatologist • Skin Care Center</p>
-                                        <span class="access-badge pending">Requested: May 28, 2023</span>
-                                    </div>
-                                </div>
-                                <div class="access-details">
-                                    <div class="access-item">
-                                        <span>Requested Access:</span>
-                                        <span>Limited Access</span>
-                                    </div>
-                                    <div class="access-item">
-                                        <span>Record Types:</span>
-                                        <span>Allergies, Medications</span>
-                                    </div>
-                                    <div class="access-item">
-                                        <span>Reason:</span>
-                                        <span>Skin condition treatment</span>
-                                    </div>
-                                </div>
-                                <div class="access-actions">
-                                    <button class="btn btn-primary btn-small">
-                                        <i class="fas fa-check"></i> Approve
-                                    </button>
-                                    <button class="btn btn-danger btn-small">
-                                        <i class="fas fa-times"></i> Deny
-                                    </button>
-                                </div>
-                            </div>
+                            {% else %}
+                            <p class="empty-msg">No pending requests.</p>
+                            {% endfor %}
                         </div>
                     </div>
-                    
-                   
+
+                    <!-- Revoked Access Tab -->
                     <div class="tab-content" id="revoked-tab">
                         <div class="doctors-grid">
+                            {% for doc in revoked_access %}
                             <div class="doctor-access-card">
                                 <div class="doctor-info">
-                                    
+                                    <img src="{{ doc.profile_img or 'https://randomuser.me/api/portraits/men/67.jpg' }}" alt="{{ doc.name }}">
                                     <div>
-                                        <h3>Dr. Robert Taylor</h3>
-                                        <p>Orthopedic Surgeon • City Hospital</p>
-                                        <span class="access-badge revoked">Revoked: April 5, 2023</span>
+                                        <h3>{{ doc.name }}</h3>
+                                        <p>{{ doc.specialization }} • {{ doc.hospital }}</p>
+                                        <span class="access-badge revoked">Revoked: {{ doc.revoked_date }}</span>
                                     </div>
                                 </div>
                                 <div class="access-details">
                                     <div class="access-item">
                                         <span>Previous Access:</span>
-                                        <span>Limited Access</span>
+                                        <span>{{ doc.access_level }}</span>
                                     </div>
                                     <div class="access-item">
                                         <span>Record Types:</span>
-                                        <span>Imaging, Physical Therapy</span>
+                                        <span>{{ doc.record_types }}</span>
                                     </div>
                                     <div class="access-item">
                                         <span>Duration:</span>
-                                        <span>Jan 10, 2023 - Apr 5, 2023</span>
+                                        <span>{{ doc.start_date }} - {{ doc.revoked_date }}</span>
                                     </div>
                                 </div>
                                 <div class="access-actions">
-                                    <button class="btn btn-outline btn-small">
-                                        <i class="fas fa-redo"></i> Reinstate
-                                    </button>
+                                    <form method="POST" action="{{ url_for('reinstate_access') }}">
+                                        <input type="hidden" name="request_id" value="{{ doc.request_id }}">
+                                        <button class="btn btn-outline btn-small" type="submit">
+                                            <i class="fas fa-redo"></i> Reinstate
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
+                            {% else %}
+                            <p class="empty-msg">No revoked access records.</p>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div>
 
 
-    <div class="modal" id="grantAccessModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Grant Access to Doctor</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="grantAccessForm">
-                    <div class="form-group">
-                        <label for="doctor-search">Search Doctor</label>
-                        <div class="search-input">
-                            <input type="text" id="doctor-search" placeholder="Enter doctor name or ID">
-                            <button type="button" class="btn-icon">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
+    <!-- Grant Access Modal -->
+<div class="modal" id="grantAccessModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Grant Access to Doctor</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="grantAccessForm" action="{{ url_for('grant_access') }}" method="POST">
+                <div class="form-group">
+                    <label for="doctor-search">Search Doctor</label>
+                    <div class="search-input">
+                        <input type="text" id="doctor-search" name="doctor_identifier" placeholder="Enter doctor name or ID" required>
+                        <button type="button" class="btn-icon">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="access-level">Access Level</label>
-                        <select id="access-level">
-                            <option value="full">Full Access</option>
-                            <option value="limited" selected>Limited Access</option>
-                            <option value="emergency">Emergency Access</option>
-                        </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="access-level">Access Level</label>
+                    <select id="access-level" name="access_type" required>
+                        <option value="full">Full Access</option>
+                        <option value="limited" selected>Limited Access</option>
+                        <option value="emergency">Emergency Access</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Record Types</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="record_types" value="examinations" checked>
+                            Examinations
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="record_types" value="prescriptions" checked>
+                            Prescriptions
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="record_types" value="lab-results" checked>
+                            Lab Results
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="record_types" value="imaging">
+                            Imaging
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="record_types" value="allergies">
+                            Allergies
+                        </label>
                     </div>
-                    
-                    <div class="form-group">
-                        <label>Record Types</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="record-type" value="examinations" checked>
-                                Examinations
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="record-type" value="prescriptions" checked>
-                                Prescriptions
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="record-type" value="lab-results" checked>
-                                Lab Results
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="record-type" value="imaging">
-                                Imaging
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="record-type" value="allergies">
-                                Allergies
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="access-duration">Access Duration</label>
-                        <select id="access-duration">
-                            <option value="1month">1 Month</option>
-                            <option value="3months">3 Months</option>
-                            <option value="6months" selected>6 Months</option>
-                            <option value="1year">1 Year</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="access-notes">Notes (Optional)</label>
-                        <textarea id="access-notes" rows="3" placeholder="Add any additional notes or context"></textarea>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-outline" id="cancelAccessBtn">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Grant Access</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="access-duration">Access Duration</label>
+                    <select id="access-duration" name="access_duration" required>
+                        <option value="1month">1 Month</option>
+                        <option value="3months">3 Months</option>
+                        <option value="6months" selected>6 Months</option>
+                        <option value="1year">1 Year</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="access-notes">Notes (Optional)</label>
+                    <textarea id="access-notes" name="notes" rows="3" placeholder="Add any additional notes or context"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancelAccessBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Grant Access</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
-    <script src="script.js"></script>
-    <script src="dashboard.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script>
+document.getElementById("grantAccessBtn").addEventListener("click", function() {
+  document.getElementById("grantAccessModal").style.display = "flex";
+});
+</script>
+
 </body>
 </html>

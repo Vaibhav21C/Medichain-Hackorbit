@@ -1,0 +1,60 @@
+import sqlite3
+from datetime import datetime
+
+# Connect to your database (or create if not exists)
+conn = sqlite3.connect("medica.db")
+cursor = conn.cursor()
+
+# Create tables (if not already created)
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS patients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    gender TEXT,
+    age INTEGER,
+    profile_image TEXT
+)
+''')
+
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS doctor_notes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    doctor_id INTEGER,
+    patient_id INTEGER,
+    note_type TEXT,
+    title TEXT,
+    content TEXT,
+    date TEXT
+)
+''')
+
+# Sample patient data
+patients = [
+    ("John Doe", "Male", 45, "https://randomuser.me/api/portraits/men/1.jpg"),
+    ("Emma Wilson", "Female", 30, "https://randomuser.me/api/portraits/women/10.jpg"),
+    ("Michael Brown", "Male", 50, "https://randomuser.me/api/portraits/men/15.jpg")
+]
+
+# Insert patients
+cursor.executemany("INSERT INTO patients (name, gender, age, profile_image) VALUES (?, ?, ?, ?)", patients)
+
+# Fetch patient IDs for reference
+cursor.execute("SELECT id, name FROM patients")
+patient_map = {name: pid for pid, name in cursor.fetchall()}
+
+# Sample doctor notes data (assuming doctor_id = 1)
+doctor_notes = [
+    (1, patient_map["John Doe"], "Diagnosis", "Hypertension Follow-up", "Patient is stable and responding well to treatment.", "2023-05-15"),
+    (1, patient_map["Emma Wilson"], "Prescription", "Antibiotic Prescription", "Prescribed amoxicillin for bacterial infection.", "2023-05-10"),
+    (1, patient_map["Michael Brown"], "Lab Results", "Blood Work Analysis", "Blood test returned normal values.", "2023-05-05"),
+    (1, patient_map["John Doe"], "Follow-up", "Post-Treatment Evaluation", "Follow-up visit shows full recovery.", "2023-04-15")
+]
+
+# Insert notes
+cursor.executemany("INSERT INTO doctor_notes (doctor_id, patient_id, note_type, title, content, date) VALUES (?, ?, ?, ?, ?, ?)", doctor_notes)
+
+# Commit and close
+conn.commit()
+conn.close()
+
+print("✅ Sample data inserted successfully.")

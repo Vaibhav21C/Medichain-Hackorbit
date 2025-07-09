@@ -6,62 +6,44 @@
     <title>Sign Up - MediChain</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
+ 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'], 
                     },
                     colors: {
-                        primary: '#3B82F6',
+                        primary: '#3B82F6', 
                         secondary: '#6B7280', 
-                        background: '#F9FAFB', 
+                        background: '#F9FAFB',
                         card: '#FFFFFF', 
                     }
                 }
             }
         }
-          
-        document.addEventListener('DOMContentLoaded', () => {
-            const signupForm = document.getElementById('signupForm');
-            
-            signupForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form data
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                
-                
-                if (name && email && password) {
-                   
-                    window.location.href = 'patient-dashboard.html';
-                }
-            });
-        });
-    
     </script>
-    
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-background min-h-screen flex items-center justify-center p-4 font-sans">
     <div class="auth-container bg-card p-8 rounded-xl shadow-lg w-full max-w-md">
         <div class="auth-header text-center mb-8">
-            <a href="index.html" class="logo text-primary text-3xl font-bold flex items-center justify-center mb-4">
+            <a href="{{ url_for('index') }}" class="logo text-primary text-3xl font-bold flex items-center justify-center mb-4">
                 <i class="fas fa-plus-square mr-2"></i> MediChain
             </a>
             <h1 class="text-3xl font-semibold text-gray-800 mb-2">Create Your Account</h1>
             <p class="text-secondary text-base">Join MediChain to secure your health records.</p>
         </div>
 
-        <form class="auth-form space-y-6">
+       <form class="auth-form space-y-6" method="POST" action="{{ url_for('signup') }}">
+
+           
             <div class="form-group flex justify-center space-x-6 mb-6">
                 <div class="flex items-center">
                     <input type="radio" id="Doctor" name="Choice" value="Doctor" class="form-radio h-5 w-5 text-primary focus:ring-primary rounded-full cursor-pointer" checked>
@@ -93,7 +75,7 @@
             </button>
         </form>
         <div class="auth-footer text-center mt-6 text-secondary">
-            <p>Already have an account? <a href="login.html" class="text-primary hover:underline font-medium">Login</a></p>
+            <p>Already have an account? <a href="{{ url_for('login') }}" class="text-primary hover:underline font-medium">Login</a></p>
         </div>
     </div>
 </body>

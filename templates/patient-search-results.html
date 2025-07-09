@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results - MediChain</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <div class="dashboard-content">
+        <h2>Search Results for "{{ query }}"</h2>
+
+        {% if results %}
+            <ul class="search-results-list">
+                {% for record in results %}
+                <li class="record-card">
+                    <div class="record-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="record-details">
+                        <h3>{{ record['access_type'].title() }}</h3>
+                        <p>{{ record['reason'] }}</p>
+                        <span class="record-date">By Dr. {{ record['doctor_name'] }} on {{ record['updated_at'] or '—' }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No matching records found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

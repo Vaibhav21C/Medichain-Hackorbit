@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Requests - MediChain</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-plus-square"></i> MediChain
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-doctors.html">
+                            <i class="fas fa-user-md"></i> Doctors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-hospitals.html">
+                            <i class="fas fa-hospital"></i> Hospitals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-patients.html">
+                            <i class="fas fa-users"></i> Patients
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin-verification.html">
+                            <i class="fas fa-check-circle"></i> Verification
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Top Navigation Bar -->
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search verification requests...">
+                </div>
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Admin Profile">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <h1>Verification Requests</h1>
+                
+                <!-- Tabs for verification status -->
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="pending">Pending (8)</button>
+                        <button class="tab-btn" data-tab="approved">Approved (36)</button>
+                        <button class="tab-btn" data-tab="denied">Denied (5)</button>
+                    </div>
+                    
+                    <!-- Pending Verification Tab -->
+                    <div class="tab-content active" id="pending-tab">
+                        <!-- Filter Controls -->
+                        <div class="filter-container">
+                            <div class="filter-group">
+                                <label for="type-filter">Type</label>
+                                <select id="type-filter">
+                                    <option value="all">All Types</option>
+                                    <option value="doctor">Doctor</option>
+                                    <option value="hospital">Hospital</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="date-filter">Date Range</label>
+                                <select id="date-filter">
+                                    <option value="all">All Time</option>
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-filter"></i> Apply Filters
+                            </button>
+                        </div>
+                        
+                        <!-- Verification Requests Table -->
+                        <div class="records-table-container">
+                            <table class="records-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Submitted</th>
+                                        <th>Documents</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr. Michael Chen" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>Dr. Michael Chen</span>
+                                            </div>
+                                        </td>
+                                        <td>Doctor</td>
+                                        <td>June 5, 2023</td>
+                                        <td>3 documents</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details" id="viewVerificationBtn">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon btn-approve" title="Approve">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                                <button class="btn-icon btn-deny" title="Deny">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Dr. Sarah Williams" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>Dr. Sarah Williams</span>
+                                            </div>
+                                        </td>
+                                        <td>Doctor</td>
+                                        <td>June 3, 2023</td>
+                                        <td>4 documents</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon btn-approve" title="Approve">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                                <button class="btn-icon btn-deny" title="Deny">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <i class="fas fa-hospital" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background-color: #e9f5fe; color: #2196f3; border-radius: 50%;"></i>
+                                                <span>Central Medical Center</span>
+                                            </div>
+                                        </td>
+                                        <td>Hospital</td>
+                                        <td>June 1, 2023</td>
+                                        <td>5 documents</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon btn-approve" title="Approve">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                                <button class="btn-icon btn-deny" title="Deny">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Approved Verification Tab -->
+                    <div class="tab-content" id="approved-tab">
+                        <!-- Similar structure to pending tab, with approved verifications -->
+                        <div class="records-table-container">
+                            <table class="records-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Approved Date</th>
+                                        <th>Approved By</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Dr. Sarah Johnson" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>Dr. Sarah Johnson</span>
+                                            </div>
+                                        </td>
+                                        <td>Doctor</td>
+                                        <td>May 15, 2023</td>
+                                        <td>Admin User</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon btn-deny" title="Revoke">
+                                                    <i class="fas fa-ban"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Denied Verification Tab -->
+                    <div class="tab-content" id="denied-tab">
+                        <!-- Similar structure to pending tab, with denied verifications -->
+                        <div class="records-table-container">
+                            <table class="records-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Denied Date</th>
+                                        <th>Reason</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="record-type">
+                                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Dr. Robert Smith" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                                <span>Dr. Robert Smith</span>
+                                            </div>
+                                        </td>
+                                        <td>Doctor</td>
+                                        <td>May 28, 2023</td>
+                                        <td>Incomplete documentation</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon btn-approve" title="Reconsider">
+                                                    <i class="fas fa-redo"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Verification Details Modal -->
+    <div class="modal" id="viewVerificationModal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Verification Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="verification-details">
+                    <!-- Applicant Information -->
+                    <div class="verification-section">
+                        <h3>Applicant Information</h3>
+                        <div class="applicant-info">
+                            <div class="applicant-header">
+                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr. Michael Chen" class="applicant-img">
+                                <div>
+                                    <h4>Dr. Michael Chen</h4>
+                                    <p>Pediatrics • Memorial Healthcare</p>
+                                    <p>Submitted: June 5, 2023</p>
+                                </div>
+                            </div>
+                            <div class="applicant-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Email:</span>
+                                    <span class="detail-value">michael.chen@example.com</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Phone:</span>
+                                    <span class="detail-value">+1 (555) 123-4567</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">License Number:</span>
+                                    <span class="detail-value">MD12345678</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Specialty:</span>
+                                    <span class="detail-value">Pediatrics</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Hospital:</span>
+                                    <span class="detail-value">Memorial Healthcare</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documents -->
+                    <div class="verification-section">
+                        <h3>Submitted Documents</h3>
+                        <div class="documents-list">
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="document-details">
+                                    <h4>Medical License</h4>
+                                    <p>medical_license_chen.pdf • 2.4 MB</p>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-icon" title="View Document">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-icon" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="document-details">
+                                    <h4>Board Certification</h4>
+                                    <p>board_certification_chen.pdf • 1.8 MB</p>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-icon" title="View Document">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-icon" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-image"></i>
+                                </div>
+                                <div class="document-details">
+                                    <h4>ID Verification</h4>
+                                    <p>id_verification_chen.jpg • 1.2 MB</p>
+                                </div>
+                                <div class="document-actions">
+                                    <button class="btn-icon" title="View Document">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-icon" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Verification Actions -->
+                    <div class="verification-actions">
+                        <button class="btn btn-approve">
+                            <i class="fas fa-check"></i> Approve Verification
+                        </button>
+                        <button class="btn btn-deny">
+                            <i class="fas fa-times"></i> Deny Verification
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i> Request More Information
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

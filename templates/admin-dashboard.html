@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - MediChain</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-plus-square"></i> MediChain
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-doctors.html">
+                            <i class="fas fa-user-md"></i> Doctors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-hospitals.html">
+                            <i class="fas fa-hospital"></i> Hospitals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-patients.html">
+                            <i class="fas fa-users"></i> Patients
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-verification.html">
+                            <i class="fas fa-check-circle"></i> Verification
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Top Navigation Bar -->
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Admin Profile">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <h1>Admin Dashboard</h1>
+                <p class="welcome-message">Welcome to the MediChain administration panel. Manage doctors, hospitals, and system verification.</p>
+                
+                <!-- Dashboard Stats -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>42</h3>
+                            <p>Registered Doctors</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>12</h3>
+                            <p>Registered Hospitals</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>156</h3>
+                            <p>Active Patients</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>8</h3>
+                            <p>Pending Verifications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Verifications -->
+                <div class="dashboard-section">
+                    <div class="section-header">
+                        <h2>Pending Verifications</h2>
+                        <a href="admin-verification.html" class="view-all">View All</a>
+                    </div>
+                    <div class="records-table-container">
+                        <table class="records-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Submitted</th>
+                                    <th>Documents</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="record-type">
+                                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr. Michael Chen" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                            <span>Dr. Michael Chen</span>
+                                        </div>
+                                    </td>
+                                    <td>Doctor</td>
+                                    <td>June 5, 2023</td>
+                                    <td>3 documents</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-icon" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon btn-approve" title="Approve">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                            <button class="btn-icon btn-deny" title="Deny">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="record-type">
+                                            <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Dr. Sarah Williams" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                            <span>Dr. Sarah Williams</span>
+                                        </div>
+                                    </td>
+                                    <td>Doctor</td>
+                                    <td>June 3, 2023</td>
+                                    <td>4 documents</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-icon" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon btn-approve" title="Approve">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                            <button class="btn-icon btn-deny" title="Deny">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="record-type">
+                                            <i class="fas fa-hospital" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background-color: #e9f5fe; color: #2196f3; border-radius: 50%;"></i>
+                                            <span>Central Medical Center</span>
+                                        </div>
+                                    </td>
+                                    <td>Hospital</td>
+                                    <td>June 1, 2023</td>
+                                    <td>5 documents</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-icon" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon btn-approve" title="Approve">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                            <button class="btn-icon btn-deny" title="Deny">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-section">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                    </div>
+                    <div class="timeline-container">
+                        <div class="timeline-date">Today</div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon approve">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>Doctor Approved</h3>
+                                    <span class="timeline-time">11:30 AM</span>
+                                </div>
+                                <p>You approved <strong>Dr. James Wilson's</strong> verification request.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon add">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>Hospital Added</h3>
+                                    <span class="timeline-time">9:45 AM</span>
+                                </div>
+                                <p>You added <strong>Riverside Medical Center</strong> to the system.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-date">Yesterday</div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon deny">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>Verification Denied</h3>
+                                    <span class="timeline-time">4:20 PM</span>
+                                </div>
+                                <p>You denied <strong>Dr. Robert Smith's</strong> verification request due to incomplete documentation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

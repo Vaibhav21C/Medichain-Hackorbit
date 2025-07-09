@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Hospitals - MediChain</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-plus-square"></i> MediChain
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-doctors.html">
+                            <i class="fas fa-user-md"></i> Doctors
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin-hospitals.html">
+                            <i class="fas fa-hospital"></i> Hospitals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-patients.html">
+                            <i class="fas fa-users"></i> Patients
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-verification.html">
+                            <i class="fas fa-check-circle"></i> Verification
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Top Navigation Bar -->
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search hospitals...">
+                </div>
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Admin Profile">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="content-header">
+                    <h1>Manage Hospitals</h1>
+                    <button class="btn btn-primary" id="addHospitalBtn">
+                        <i class="fas fa-plus"></i> Add Hospital
+                    </button>
+                </div>
+                
+                <!-- Filter Controls -->
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="location-filter">Location</label>
+                        <select id="location-filter">
+                            <option value="all">All Locations</option>
+                            <option value="new-york">New York</option>
+                            <option value="los-angeles">Los Angeles</option>
+                            <option value="chicago">Chicago</option>
+                            <option value="houston">Houston</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="type-filter">Type</label>
+                        <select id="type-filter">
+                            <option value="all">All Types</option>
+                            <option value="general">General Hospital</option>
+                            <option value="specialty">Specialty Hospital</option>
+                            <option value="clinic">Clinic</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="status-filter">Status</label>
+                        <select id="status-filter">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending Verification</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                </div>
+                
+                <!-- Hospitals Table -->
+                <div class="records-table-container">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Type</th>
+                                <th>Doctors</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <i class="fas fa-hospital" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background-color: #e9f5fe; color: #2196f3; border-radius: 50%;"></i>
+                                        <span>Central Medical Center</span>
+                                    </div>
+                                </td>
+                                <td>New York, NY</td>
+                                <td>General Hospital</td>
+                                <td>42</td>
+                                <td><span class="access-badge active">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-deny" title="Suspend">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <i class="fas fa-hospital" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background-color: #e9f5fe; color: #2196f3; border-radius: 50%;"></i>
+                                        <span>Riverside Hospital</span>
+                                    </div>
+                                </td>
+                                <td>Los Angeles, CA</td>
+                                <td>General Hospital</td>
+                                <td>35</td>
+                                <td><span class="access-badge active">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-deny" title="Suspend">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <i class="fas fa-hospital" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background-color: #e9f5fe; color: #2196f3; border-radius: 50%;"></i>
+                                        <span>Memorial Healthcare</span>
+                                    </div>
+                                </td>
+                                <td>Chicago, IL</td>
+                                <td>Specialty Hospital</td>
+                                <td>28</td>
+                                <td><span class="access-badge active">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-deny" title="Suspend">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <i class="fas fa-hospital" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background-color: #e9f5fe; color: #2196f3; border-radius: 50%;"></i>
+                                        <span>City Health Clinic</span>
+                                    </div>
+                                </td>
+                                <td>Houston, TX</td>
+                                <td>Clinic</td>
+                                <td>12</td>
+                                <td><span class="access-badge pending">Pending</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-deny" title="Suspend">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <i class="fas fa-hospital" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; background-color: #e9f5fe; color: #2196f3; border-radius: 50%;"></i>
+                                        <span>Valley Medical Group</span>
+                                    </div>
+                                </td>
+                                <td>San Francisco, CA</td>
+                                <td>General Hospital</td>
+                                <td>0</td>
+                                <td><span class="access-badge suspended">Suspended</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-approve" title="Activate">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <span class="pagination-ellipsis">...</span>
+                    <button class="pagination-btn">5</button>
+                    <button class="pagination-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Hospital Modal -->
+    <div class="modal" id="addHospitalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Hospital</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addHospitalForm">
+                    <div class="form-group">
+                        <label for="hospital-name">Hospital Name</label>
+                        <input type="text" id="hospital-name" placeholder="Enter hospital name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hospital-email">Email Address</label>
+                        <input type="email" id="hospital-email" placeholder="Enter hospital email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hospital-phone">Phone Number</label>
+                        <input type="tel" id="hospital-phone" placeholder="Enter hospital phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hospital-address">Address</label>
+                        <input type="text" id="hospital-address" placeholder="Enter street address" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hospital-city">City</label>
+                            <input type="text" id="hospital-city" placeholder="City" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hospital-state">State</label>
+                            <input type="text" id="hospital-state" placeholder="State" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hospital-zip">ZIP Code</label>
+                            <input type="text" id="hospital-zip" placeholder="ZIP Code" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hospital-type">Hospital Type</label>
+                        <select id="hospital-type" required>
+                            <option value="">Select Type</option>
+                            <option value="general">General Hospital</option>
+                            <option value="specialty">Specialty Hospital</option>
+                            <option value="clinic">Clinic</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hospital-license">License Number</label>
+                        <input type="text" id="hospital-license" placeholder="Enter hospital license number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hospital-documents">Upload Documents</label>
+                        <div class="file-upload">
+                            <input type="file" id="hospital-documents" multiple>
+                            <label for="hospital-documents" class="file-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose files</span>
+                            </label>
+                            <span class="file-selected">No files selected</span>
+                        </div>
+                        <small>Upload license, certifications, and other relevant documents (PDF, JPG, PNG)</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Add Hospital</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

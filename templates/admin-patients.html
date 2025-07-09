@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Patients - MediChain</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-plus-square"></i> MediChain
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-doctors.html">
+                            <i class="fas fa-user-md"></i> Doctors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-hospitals.html">
+                            <i class="fas fa-hospital"></i> Hospitals
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin-patients.html">
+                            <i class="fas fa-users"></i> Patients
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-verification.html">
+                            <i class="fas fa-check-circle"></i> Verification
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Top Navigation Bar -->
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search patients...">
+                </div>
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Admin Profile">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="content-header">
+                    <h1>Manage Patients</h1>
+                    <button class="btn btn-primary" id="addPatientBtn">
+                        <i class="fas fa-plus"></i> Add Patient
+                    </button>
+                </div>
+                
+                <!-- Filter Controls -->
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="age-filter">Age Group</label>
+                        <select id="age-filter">
+                            <option value="all">All Ages</option>
+                            <option value="0-18">0-18</option>
+                            <option value="19-35">19-35</option>
+                            <option value="36-50">36-50</option>
+                            <option value="51-65">51-65</option>
+                            <option value="65+">65+</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="records-filter">Records</label>
+                        <select id="records-filter">
+                            <option value="all">All Records</option>
+                            <option value="0">No Records</option>
+                            <option value="1-5">1-5 Records</option>
+                            <option value="6-10">6-10 Records</option>
+                            <option value="10+">10+ Records</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="status-filter">Status</label>
+                        <select id="status-filter">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                </div>
+                
+                <!-- Patients Table -->
+                <div class="records-table-container">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Medical Records</th>
+                                <th>Doctors</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="John Smith" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                        <span>John Smith</span>
+                                    </div>
+                                </td>
+                                <td>42</td>
+                                <td>8 records</td>
+                                <td>2 doctors</td>
+                                <td><span class="access-badge active">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-deny" title="Suspend">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Johnson" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                        <span>Emily Johnson</span>
+                                    </div>
+                                </td>
+                                <td>35</td>
+                                <td>12 records</td>
+                                <td>3 doctors</td>
+                                <td><span class="access-badge active">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-deny" title="Suspend">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Michael Brown" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                        <span>Michael Brown</span>
+                                    </div>
+                                </td>
+                                <td>58</td>
+                                <td>15 records</td>
+                                <td>4 doctors</td>
+                                <td><span class="access-badge active">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-deny" title="Suspend">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Sarah Davis" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                        <span>Sarah Davis</span>
+                                    </div>
+                                </td>
+                                <td>29</td>
+                                <td>3 records</td>
+                                <td>1 doctor</td>
+                                <td><span class="access-badge active">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-deny" title="Suspend">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="record-type">
+                                        <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="Robert Wilson" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+                                        <span>Robert Wilson</span>
+                                    </div>
+                                </td>
+                                <td>67</td>
+                                <td>22 records</td>
+                                <td>5 doctors</td>
+                                <td><span class="access-badge suspended">Suspended</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-icon" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon btn-approve" title="Activate">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <span class="pagination-ellipsis">...</span>
+                    <button class="pagination-btn">15</button>
+                    <button class="pagination-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Patient Modal -->
+    <div class="modal" id="addPatientModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Patient</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addPatientForm">
+                    <div class="form-group">
+                        <label for="patient-name">Full Name</label>
+                        <input type="text" id="patient-name" placeholder="Enter patient's full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patient-email">Email Address</label>
+                        <input type="email" id="patient-email" placeholder="Enter patient's email address" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="patient-dob">Date of Birth</label>
+                            <input type="date" id="patient-dob" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patient-gender">Gender</label>
+                            <select id="patient-gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patient-address">Address</label>
+                        <input type="text" id="patient-address" placeholder="Enter street address" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="patient-city">City</label>
+                            <input type="text" id="patient-city" placeholder="City" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patient-state">State</label>
+                            <input type="text" id="patient-state" placeholder="State" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patient-zip">ZIP Code</label>
+                            <input type="text" id="patient-zip" placeholder="ZIP Code" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patient-emergency">Emergency Contact</label>
+                        <input type="text" id="patient-emergency" placeholder="Name and phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patient-notes">Additional Notes</label>
+                        <textarea id="patient-notes" placeholder="Enter any additional information"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Add Patient</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
