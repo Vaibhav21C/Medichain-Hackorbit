@@ -15,7 +15,7 @@
 </head>
 <body class="dashboard-body">
     <div class="dashboard-container">
-        <!-- Sidebar Navigation -->
+       
         <aside class="dashboard-sidebar">
             <div class="sidebar-header">
                 <a href="{{ url_for('doctor_dashboard') }}" class="logo">
@@ -56,9 +56,9 @@
             </div>
         </aside>
 
-        <!-- Main Content Area -->
+        
         <main class="dashboard-main">
-            <!-- Top Navigation Bar -->
+            
             <header class="dashboard-header">
                 <div class="header-search">
                     <form action="{{ url_for('doctor_search') }}" method="GET" class="search-form flex items-center space-x-2">
@@ -82,7 +82,7 @@
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
+          
             <div class="dashboard-content">
                 <div class="content-header">
                     <h1>Diagnosis Notes</h1>
@@ -91,7 +91,7 @@
                     </button>
                 </div>
                 
-                <!-- Filter Options -->
+             
                 <div class="filter-container">  
                     <div class="filter-group">
                         <label for="date-filter">Date Range:</label>
@@ -115,7 +115,6 @@
                     </div>
                 </div>
                 
-                <!-- Notes List -->
                 <div class="records-table-container">
                     <table class="records-table">
                         <thead>
@@ -159,7 +158,7 @@
                     </table>
                 </div>
                 
-                <!-- Pagination -->
+           
                 <div class="pagination">
                     <button class="pagination-btn" disabled>
                         <i class="fas fa-chevron-left"></i>
@@ -175,7 +174,7 @@
         </main>
     </div>
 
-    <!-- New/Edit Note Modal -->
+    
     <div class="modal" id="noteModal">
         <div class="modal-content">
             <div class="modal-header">
