@@ -15,7 +15,7 @@
 </head>
 <body class="dashboard-body">
     <div class="dashboard-container">
-        <!-- Sidebar Navigation -->
+        
         <aside class="dashboard-sidebar">
             <div class="sidebar-header">
                 <a href="{{ url_for('patient_dashboard') }}" class="logo">>
@@ -51,9 +51,8 @@
             </div>
         </aside>
 
-        <!-- Main Content Area -->
         <main class="dashboard-main">
-            <!-- Top Navigation Bar -->
+         
             <header class="dashboard-header">
                 <div class="header-search">
                     <form action="{{ url_for('patient_search') }}" method="GET" class="search-form">
@@ -74,9 +73,8 @@
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
             <div class="dashboard-content">
-                <!-- Upload Record Modal Trigger -->
+           
                 <div class="content-header">
                     <h1>Medical Records</h1>
                     <button class="btn btn-primary" onclick="document.getElementById('uploadModal').style.display='block'">
@@ -84,7 +82,6 @@
                     </button>
                 </div>
 
-                <!-- Upload Record Modal -->
                 <div id="uploadModal" class="modal" style="display:none;">
                     <div class="modal-content">
                         <span class="close" onclick="document.getElementById('uploadModal').style.display='none'">&times;</span>
@@ -173,7 +170,6 @@
 
 
 
-                <!-- Records Table -->
                 <div class="records-table-container">
                     <table class="records-table">
                         <thead>
@@ -220,7 +216,6 @@
                     </table>
                 </div>
 
-                <!-- Pagination -->
                 <div class="pagination">
                     <button class="pagination-btn" disabled>
                         <i class="fas fa-chevron-left"></i>
