@@ -29,7 +29,6 @@
     min-height: 100vh;
 }
 
-/* --- Sidebar --- */
 .dashboard-sidebar {
     width: var(--sidebar-width);
     background-color: var(--white-color);
@@ -111,7 +110,7 @@
     text-decoration: none;
 }
 
-/* --- Main Content Area --- */
+
 .dashboard-main {
     flex: 1;
     margin-left: var(--sidebar-width);
@@ -120,7 +119,7 @@
     flex-direction: column;
 }
 
-/* --- Header --- */
+
 .dashboard-header {
     height: var(--header-height);
     background-color: var(--white-color);
@@ -207,7 +206,7 @@
     margin-right: 10px;
 }
 
-/* --- Dashboard Content --- */
+
 .dashboard-content {
     padding: 30px;
     flex: 1;
@@ -234,7 +233,7 @@
     margin: 0;
 }
 
-/* --- Stats Cards --- */
+
 .stats-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -284,7 +283,7 @@
     font-size: 0.9rem;
 }
 
-/* --- Dashboard Sections --- */
+
 .dashboard-section {
     background-color: var(--white-color);
     border-radius: 10px;
@@ -404,7 +403,7 @@
     color: white;
 }
 
-/* --- Doctor Cards --- */
+
 .doctors-list {
     padding: 20px;
 }
@@ -462,7 +461,7 @@
     font-size: 0.8rem;
 }
 
-/* --- Filter Container --- */
+
 .filter-container {
     display: flex;
     gap: 20px;
@@ -491,7 +490,7 @@
     font-size: 0.9rem;
 }
 
-/* --- Records Table --- */
+
 .records-table-container {
     overflow-x: auto;
 }
@@ -548,7 +547,7 @@
     color: white;
 }
 
-/* --- Pagination --- */
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -592,7 +591,7 @@
     width: 35px;
 }
 
-/* --- Doctor Access Management --- */
+
 .doctors-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -693,7 +692,7 @@
     background-color: #c82333;
 }
 
-/* --- Tabs --- */
+
 .tabs-container {
     background-color: white;
     border-radius: 10px;
@@ -729,7 +728,7 @@
     display: block;
 }
 
-/* --- Modal --- */
+
 .modal {
     display: none;
     position: fixed;
@@ -820,7 +819,7 @@
     margin-right: 8px;
 }
 
-/* --- Timeline --- */
+
 .timeline-container {
     position: relative;
     padding: 20px 0;
@@ -943,7 +942,7 @@
     margin-top: 20px;
 }
 
-/* --- Responsive Design --- */
+
 @media (max-width: 992px) {
     .dashboard-sidebar {
         width: 70px;
