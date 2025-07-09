@@ -55,3 +55,6 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 
 **📋 Patient Dashboard**
 ![Dashboard Screenshot](./screenshots/Dashboard.png)
+
+**📋 Doctor Dashboard**
+![Dashboard Screenshot](./screenshots/Doctor_dashboard.png)
