@@ -4,6 +4,7 @@
   <h1 align="center"><a href="https://medichain.biz/" target="_blank">MediChain</a></h1>
   <p align="center">
     Revolutionizing healthcare data management: blockchain-based medical record storage for patients 
+    This repository contains the Solidity smart contract for **MediChain**, a decentralized platform for managing and accessing medical records securely using **zkSync Era**.
   
   </p>
 </p>
@@ -45,6 +46,19 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 | **AI Bot**    | Rasa                                |
 
 ---
+---
+
+## 📦 Prerequisites
+
+- python3.8 or less
+- Metamask wallet (Goerli testnet funds + zkSync testnet connected)
+- Internet access to Remix IDE
+- Contract file: `medichain.sol`
+- rasa framework
+- flask
+
+---
+
 ## 📸 Screenshots
 
 <details>
@@ -87,6 +101,29 @@ Our project MediChain seeks to address these challenges by leveraging the power 
 # Clone the repository
 git clone [https://github.com/Vaibhav21C/Medichain-Hackorbit]
 cd medichain
+
+# Run the Blockchain file
+  ### ✅ 1. Open Remix
+
+Go to: [https://remix.ethereum.org](https://remix.ethereum.org)
+
+---
+
+ ### ✅ 2. Enable zkSync Remix Plugin
+
+1. Click the **"Plugins"** tab on the sidebar.
+2. Search for **zkSync** and activate the plugin.
+3. A new **zkSync Deploy & Verify** tab will appear.
+
+---
+
+ ### ✅ 3. Add Your Contract
+
+1. In Remix’s **File Explorer**, create or upload your contract:
+   - File: `medichain.sol`
+2. Make sure your contract uses:
+   ```solidity
+
 
 # Create a virtual environment
 python -m venv venv
